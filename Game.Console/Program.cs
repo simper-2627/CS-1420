@@ -4,19 +4,34 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        int[] numbers = [ 1, 2, 3, 4, 5 ];
+        string answer = "green";
 
-        // for (int i = 0; i < numbers.Length; i++)
-        foreach(int number in numbers)
+        Console.WriteLine("Let's play hang man");
+
+
+        Console.Write("Guess a letter: ");
+        var guess = Console.ReadLine() ?? "";
+        guess = guess.Trim()
+            .ToLower();
+
+
+        // Console.WriteLine("|"+guess+"|");
+
+        // not already guessed
+        if (guess.Length != 1)
         {
-            if (number % 2 != 0)
-            {
-                Console.Write(number + ", ");
-            }
-
+            // Length == 1
+            Console.WriteLine("Only input one letter");
         }
-        
-
+        else if (!char.IsAsciiLetter(guess[0]))
+        {
+            // only letters
+            Console.WriteLine("Only input one letter");
+        } else
+        {
+            
+            
+        }
 
     }
 }
