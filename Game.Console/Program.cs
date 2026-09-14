@@ -4,20 +4,70 @@ internal class Program
 {
     private static void Main(string[] args)
     {
+        int incorrectGuesses = 0;
+
         string answer = "green";
+
+        char[] correct = new char[answer.Length];
+        for (int i = 0; i < correct.Length; i++)
+        {
+            correct[i] = '-';
+        }
 
         Console.WriteLine("Let's play hang man");
 
+        while (incorrectGuesses < 6)
+        {
+            Console.Write("\nCurrent status: ");
+            for (int i = 0; i < correct.Length; i++)
+            {
+                Console.Write(correct[i] + " ");
+            }
+            Console.WriteLine("\nIncorrect Guesses: " + incorrectGuesses);
 
+            char guess = PromptInputValidate();
+
+            if (guess == ' ')
+                return;
+
+            bool found = false;
+            for (int i = 0; i < answer.Length; i++)
+            {
+                if (answer[i] == guess)
+                {
+                    found = true;
+                    correct[i] = answer[i];
+                }
+            }
+            if (found)
+            {
+                Console.WriteLine($"Yes. The word contains at least one {guess}.");
+            }
+            else
+            {
+                incorrectGuesses++;
+                Console.WriteLine($"The word does not contain {guess}.");
+            }
+        }
+        // not already guessed
+
+        if (incorrectGuesses >= 6)
+        {
+            Console.WriteLine($"You lose. The word was: {answer}");
+        }
+
+    }
+
+    static char PromptInputValidate()
+    {
+        char value = ' ';
         Console.Write("Guess a letter: ");
-        var guess = Console.ReadLine() ?? "";
+        string guess = Console.ReadLine() ?? "";
         guess = guess.Trim()
             .ToLower();
 
-
         // Console.WriteLine("|"+guess+"|");
 
-        // not already guessed
         if (guess.Length != 1)
         {
             // Length == 1
@@ -27,11 +77,11 @@ internal class Program
         {
             // only letters
             Console.WriteLine("Only input one letter");
-        } else
-        {
-            
-            
         }
-
+        else
+        {
+            value = guess[0];
+        }
+        return value;
     }
 }
