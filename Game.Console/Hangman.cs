@@ -1,6 +1,8 @@
 ﻿
 
-internal class Program
+using System.Security.Cryptography;
+
+internal class Hangman
 {
     private static void Main(string[] args)
     {
@@ -14,6 +16,8 @@ internal class Program
             correct[i] = '-';
         }
 
+        char[] guessedLetters = new char[26];
+
         Console.WriteLine("Let's play hang man");
 
         while (incorrectGuesses < 6)
@@ -24,6 +28,16 @@ internal class Program
                 Console.Write(correct[i] + " ");
             }
             Console.WriteLine("\nIncorrect Guesses: " + incorrectGuesses);
+
+            if (incorrectGuesses > 0)
+            {
+                Console.Write("You have already guessed: ");
+                for (int i = 0; i < incorrectGuesses; i++)
+                {
+                    Console.Write(guessedLetters[i] + ", ");
+                }
+                Console.WriteLine(" ");
+            }
 
             char guess = PromptInputValidate();
 
@@ -45,8 +59,23 @@ internal class Program
             }
             else
             {
-                incorrectGuesses++;
-                Console.WriteLine($"The word does not contain {guess}.");
+                bool guessedPreviously = false;
+
+                for (int i = 0; i < incorrectGuesses; i++)
+                {
+                    if (guessedLetters[i] == guess)
+                    {
+                        guessedPreviously = true;
+                    }
+                }
+
+                if (!guessedPreviously)
+                {
+                    guessedLetters[incorrectGuesses] = guess;
+                    incorrectGuesses++;
+                    Console.WriteLine($"The word does not contain {guess}.");
+                    Console.WriteLine("length: " + guessedLetters.Length);
+                }
             }
         }
         // not already guessed
