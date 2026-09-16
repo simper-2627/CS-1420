@@ -2,7 +2,7 @@
 
 internal class Program
 {
-    private static void xMain(string[] args)
+    private static void Main(string[] args)
     {
         int number = 7;
         int[] arr = { 1, 2, 3, 4, 5 };
