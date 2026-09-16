@@ -7,52 +7,28 @@ internal class Hangman
     private static void Main(string[] args)
     {
         int incorrectGuesses = 0;
-
         string answer = "green";
-
         char[] correct = new char[answer.Length];
         for (int i = 0; i < correct.Length; i++)
         {
             correct[i] = '-';
         }
-
         char[] guessedLetters = new char[26];
 
         Console.WriteLine("Let's play hang man");
 
-        while (incorrectGuesses < 6)
-        {
-            Console.Write("\nCurrent status: ");
-            for (int i = 0; i < correct.Length; i++)
-            {
-                Console.Write(correct[i] + " ");
-            }
-            Console.WriteLine("\nIncorrect Guesses: " + incorrectGuesses);
+        bool winner = false;
 
-            if (incorrectGuesses > 0)
-            {
-                Console.Write("You have already guessed: ");
-                for (int i = 0; i < incorrectGuesses; i++)
-                {
-                    Console.Write(guessedLetters[i] + ", ");
-                }
-                Console.WriteLine(" ");
-            }
+        while (incorrectGuesses < 6 && !winner)
+        {
+            PrintStatus(correct, incorrectGuesses, guessedLetters);
 
             char guess = PromptInputValidate();
-
             if (guess == ' ')
                 return;
 
-            bool found = false;
-            for (int i = 0; i < answer.Length; i++)
-            {
-                if (answer[i] == guess)
-                {
-                    found = true;
-                    correct[i] = answer[i];
-                }
-            }
+            bool found = CheckGuess(answer, guess, correct);
+
             if (found)
             {
                 Console.WriteLine($"Yes. The word contains at least one {guess}.");
@@ -77,14 +53,58 @@ internal class Hangman
                     Console.WriteLine("length: " + guessedLetters.Length);
                 }
             }
+
+            winner = true;
+            if (correct.ToString() != answer)
+            {
+                winner = false;
+            }
+
+            for (int i = 0; i < correct.Length; i++)
+            {
+            }
+
         }
-        // not already guessed
 
         if (incorrectGuesses >= 6)
         {
             Console.WriteLine($"You lose. The word was: {answer}");
         }
 
+    }
+
+    private static bool CheckGuess(string answer, char guess, char[] correct)
+    {
+        bool found = false;
+        for (int i = 0; i < answer.Length; i++)
+        {
+            if (answer[i] == guess)
+            {
+                found = true;
+                correct[i] = answer[i];
+            }
+        }
+        return found;
+    }
+
+    private static void PrintStatus(char[] correct, int incorrectGuesses, char[] guessedLetters)
+    {
+        Console.Write("\nCurrent status: ");
+        for (int i = 0; i < correct.Length; i++)
+        {
+            Console.Write(correct[i] + " ");
+        }
+        Console.WriteLine("\nIncorrect Guesses: " + incorrectGuesses);
+
+        if (incorrectGuesses > 0)
+        {
+            Console.Write("You have already guessed: ");
+            for (int i = 0; i < incorrectGuesses; i++)
+            {
+                Console.Write(guessedLetters[i] + ", ");
+            }
+            Console.WriteLine(" ");
+        }
     }
 
     static char PromptInputValidate()

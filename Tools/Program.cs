@@ -8,15 +8,16 @@ internal class Program
         int[] arr2 = { 1, 2, 3 };
         int[] arr3 = arr1;
 
-        Console.WriteLine(ArrayCompare(arr1, arr2));
-        Console.WriteLine(ArrayCompare(arr1, arr3));
+        ArrayAddressCompare(arr1, arr2);
+        ArrayAddressCompare(arr1, arr3);
         
         arr3 = new int[] {3,2,1};
 
-        Console.WriteLine(ArrayCompare(arr1, arr3));
+        ArrayAddressCompare(arr1, arr3);
 
         
-
+        Console.ForegroundColor = ConsoleColor.White;
+        Environment.Exit(0);
     }
 
     static bool ArrayCompare(int [] one, int [] two)
@@ -38,10 +39,12 @@ internal class Program
     {
         if (one == two)
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("They are the same.");
         }
         else
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("They are NOT the same.");
         }
     }
