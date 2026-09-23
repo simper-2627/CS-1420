@@ -15,7 +15,8 @@ internal class Hangman
         }
         char[] guessedLetters = new char[26];
 
-        Console.WriteLine("Let's play hang man");
+        Console.Clear();
+        Console.WriteLine("Let's play hangman");
 
         bool winner = false;
 
@@ -24,10 +25,12 @@ internal class Hangman
             PrintStatus(correct, incorrectGuesses, guessedLetters);
 
             char guess = PromptInputValidate();
+            Console.Clear();
             if (guess == ' ')
-                return;
+                continue;
 
             bool found = CheckGuess(answer, guess, correct);
+
 
             if (found)
             {
@@ -50,7 +53,7 @@ internal class Hangman
                     guessedLetters[incorrectGuesses] = guess;
                     incorrectGuesses++;
                     Console.WriteLine($"The word does not contain {guess}.");
-                    Console.WriteLine("length: " + guessedLetters.Length);
+                    // Console.WriteLine("length: " + guessedLetters.Length);
                 }
             }
 
@@ -59,11 +62,6 @@ internal class Hangman
             {
                 winner = false;
             }
-
-            for (int i = 0; i < correct.Length; i++)
-            {
-            }
-
         }
 
         if (incorrectGuesses >= 6)
@@ -125,7 +123,7 @@ internal class Hangman
         else if (!char.IsAsciiLetter(guess[0]))
         {
             // only letters
-            Console.WriteLine("Only input one letter");
+            Console.WriteLine("Your guess must be a letter");
         }
         else
         {

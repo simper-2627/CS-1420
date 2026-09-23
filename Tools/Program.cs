@@ -5,26 +5,16 @@ internal class Program
     private static void Main(string[] args)
     {
 
+        int item = 13;
+        TryThis("hello", out item);
 
-        int num = 70;
-        if (num  < 10)
-        {
-            Console.WriteLine("shmall");
-        }
-
-
-
-
-        int i = 0;
-        // while ( i < 10)
-        for (;;)
-        {
-            Console.Write(i + ", ");
-            i++;
-            if (i >= 10)
-                break;
-        }
+        Console.WriteLine(item);
     }
 
+    static bool TryThis(string value, out int parsed)
+    {
+        // parsed = parsed + 12;
+        return true;
+    }
 
 }
