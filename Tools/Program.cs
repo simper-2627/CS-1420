@@ -1,20 +1,16 @@
-
-
-internal class Program
+﻿internal class Program
 {
     private static void Main(string[] args)
     {
+        Rectangle shape = new Rectangle(3,4);
 
-        int item = 13;
-        TryThis("hello", out item);
+        Console.WriteLine($"Rectangle {shape.Width}, {shape.Height}; Area: {shape.Area}");
+        shape.Height = 5;
+        Console.WriteLine($"Rectangle {shape.Width}, {shape.Height}; Area: {shape.Area}");
+        
 
-        Console.WriteLine(item);
     }
 
-    static bool TryThis(string value, out int parsed)
-    {
-        // parsed = parsed + 12;
-        return true;
-    }
+
 
 }

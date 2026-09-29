@@ -87,7 +87,24 @@ internal class Hangman
 
     private static void PrintStatus(char[] correct, int incorrectGuesses, char[] guessedLetters)
     {
-        Console.Write("\nCurrent status: ");
+        // Console.Write("\nCurrent status: ");
+
+        char[] man = 
+@"  ____
+  |  |
+     |
+     |
+     |
+     |
+ ------
+".ToArray();
+
+        if (incorrectGuesses >= 1)
+        {
+            man[12] = 'O';
+        }
+        Console.WriteLine(man);
+        
         for (int i = 0; i < correct.Length; i++)
         {
             Console.Write(correct[i] + " ");
