@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Garden.Console/Garden.Console.csproj" />
+  <Project Path="Garden.Logic/Garden.Logic.csproj" />
+  <Project Path="Garden.Test/Garden.Test.csproj" />
+</Solution>
