@@ -44,11 +44,13 @@ public class Rectangle
         }
     }
 
+    public static int Count = 0;
+
     public Rectangle(int width, int height)
     {
         this.width = width;
         this.height = height;
-
+        Count ++;
     }
 }
 
