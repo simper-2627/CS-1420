@@ -12,4 +12,26 @@ public class Bean : Plant
         MaxPods = 50;
         BeansPerPod = 12;
     }
+
+    public override void Grow()
+    {
+        if (IsWatered)
+        {
+            DaysOld++;
+            IsWatered = false;
+
+            Height += 1.2;
+            TryGrowPod();
+
+        }
+        
+    }
+
+    private void TryGrowPod()
+    {
+        if (DaysOld >= DaysToMaturity &&(DaysOld - DaysToMaturity) % 3 == 0)
+        {
+            Pods++;
+        }
+    }
 }

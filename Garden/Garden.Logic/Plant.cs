@@ -15,13 +15,26 @@ public abstract class Plant
         IsWatered = false;
     }
 
-    public void Grow()
-    {
-        if (IsWatered)
-        {
-            Height += 1.2;
-            IsWatered = false;
-            DaysOld++;
-        }
-    }
+    public abstract void Grow();
+
+    // {
+    //     if (IsWatered)
+    //     {
+    //         Height += 1.2;
+    //         IsWatered = false;
+    //         DaysOld++;
+
+    //         if(this.GetType() == typeof(Bean))
+    //         {
+    //             Bean b = (Bean) this;
+    //            b.TryGrowPod();
+    //         }
+    //         if(this.GetType() == typeof(Potato))
+    //         {
+    //             Potato p = (Potato) this;
+    //             p.TryGrowTuber();
+    //             p.IncreaseTuberSize();
+    //         }
+    //     }
+    // }
 }

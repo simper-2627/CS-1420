@@ -14,4 +14,9 @@ public class Potato : Plant
     {
         Tubers = new List<double>();
     }
+
+    public override void Grow()
+    {
+        
+    }
 }
