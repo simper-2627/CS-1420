@@ -4,6 +4,11 @@ namespace Garden.Test;
 
 public class GrosTest
 {
+    public static bool DoubleCompare(double a, double b, double e)
+    {
+        return Math.Abs(a-b) < e;
+    }
+
     [Fact]
     public void BeanGrowWatered()
     {
@@ -32,4 +37,23 @@ public class GrosTest
         Assert.Equal(2, bean.Pods);
 
     }
+
+    [Fact]
+    public void PotatoTest()
+    {
+        Potato potato = new Potato();
+        potato.Grow();
+
+        // Only grow if watered
+        Assert.True(DoubleCompare(potato.Height, 0, 0.00001));
+
+
+        potato.IsWatered = true;
+        potato.Grow();
+        Assert.False(potato.IsWatered);
+        Assert.True(potato.Height > 0);
+    }
+
+
+
 }

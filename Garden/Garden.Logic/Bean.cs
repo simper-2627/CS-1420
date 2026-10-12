@@ -20,16 +20,23 @@ public class Bean : Plant
             DaysOld++;
             IsWatered = false;
 
-            Height += 1.2;
+            if (Height < 10)
+            {
+                Height += 1.2;
+            }
+            else
+            {
+                Height += .6;
+            }
             TryGrowPod();
 
         }
-        
+
     }
 
     private void TryGrowPod()
     {
-        if (DaysOld >= DaysToMaturity &&(DaysOld - DaysToMaturity) % 3 == 0)
+        if (DaysOld >= DaysToMaturity && (DaysOld - DaysToMaturity) % 3 == 0)
         {
             Pods++;
         }

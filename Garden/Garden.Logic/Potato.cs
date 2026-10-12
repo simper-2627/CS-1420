@@ -17,6 +17,10 @@ public class Potato : Plant
 
     public override void Grow()
     {
-        
+        if (IsWatered)
+        {
+            Height += 0.8;
+            IsWatered = false;
+        }
     }
 }
