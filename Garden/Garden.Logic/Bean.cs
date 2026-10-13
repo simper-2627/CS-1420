@@ -1,3 +1,4 @@
+namespace Garden.Logic;
 
 public class Bean : Plant
 {
@@ -32,6 +33,12 @@ public class Bean : Plant
 
         }
 
+    }
+
+    public override List<Produce> Harvest()
+    {
+        Pods = 0;
+        return new List<Produce>();
     }
 
     private void TryGrowPod()

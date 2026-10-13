@@ -1,3 +1,4 @@
+namespace Garden.Logic;
 
 public class Potato : Plant
 {
@@ -22,5 +23,10 @@ public class Potato : Plant
             Height += 0.8;
             IsWatered = false;
         }
+    }
+
+    public override List<Produce> Harvest()
+    {
+        throw new NotImplementedException();
     }
 }

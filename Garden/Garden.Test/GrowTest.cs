@@ -12,18 +12,13 @@ public class GrosTest
     [Fact]
     public void BeanGrowWatered()
     {
-        Bean b = new Bean();
-        b.IsWatered = true;
-        b.Grow();
-        Assert.True(b.Height > 0);
-        Assert.Equal(1, b.DaysOld);
-    }
-
-    [Fact]
-    public void BeanMakesPod()
-    {
         Bean bean = new Bean();
-        for (int i = 0; i < 12; i++)
+        bean.IsWatered = true;
+        bean.Grow();
+        Assert.True(bean.Height > 0);
+        Assert.Equal(1, bean.DaysOld);
+
+        for (int i = 1; i < 12; i++)
         {
             bean.IsWatered = true;
             bean.Grow();
@@ -36,12 +31,15 @@ public class GrosTest
         }
         Assert.Equal(2, bean.Pods);
 
+        List<Produce> beanpods = bean.Harvest();
+        Assert.Equal(0, bean.Pods);
+        Assert.Equal(2, beanpods.Count);
     }
 
     [Fact]
     public void PotatoTest()
     {
-        Potato potato = new Potato();
+        Garden.Logic.Potato potato = new Garden.Logic.Potato();
         potato.Grow();
 
         // Only grow if watered
