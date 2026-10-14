@@ -2,7 +2,7 @@
 
 namespace Garden.Test;
 
-public class GrosTest
+public class GrowTest
 {
     public static bool DoubleCompare(double a, double b, double e)
     {
