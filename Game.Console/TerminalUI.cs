@@ -1,12 +1,20 @@
 ﻿
 
 using System.Security.Cryptography;
+using System.Text.Json;
 
 internal class TerminalUI
 {
     private static void Main(string[] args)
     {
+        var list = new List<int> { 1, 32, 5, 6, 657, 5, 7, 678, 9, 45, 45, 3, 434, 4, 3, 2, 34, 56, 6, 6, 7, 7, 8, 9, 0, 5 };
         Hangman game = new Hangman();
+
+        string json = JsonSerializer.Serialize(game);
+        Console.WriteLine(json);
+
+        return;
+
 
         Console.Clear();
         Console.WriteLine("Let's play hangman");

@@ -37,8 +37,15 @@ public class Bean : Plant
 
     public override List<Produce> Harvest()
     {
+        List<Produce> produce = new List<Produce>();
+
+        for(int i = 0; i < Pods; i++)
+        {
+            produce.Add(new BeanPod());
+        }
+
         Pods = 0;
-        return new List<Produce>();
+        return produce;
     }
 
     private void TryGrowPod()

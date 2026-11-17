@@ -10,9 +10,16 @@ public class GrowTest
     }
 
     [Fact]
-    public void BeanGrowWatered()
+    public void BeanLifeCyle()
     {
-        Bean bean = new Bean();
+        Seed beanseed = new BeanSeed();
+
+        Plant p = beanseed.Plant();
+
+        Assert.Equal(typeof(Bean), p.GetType());
+
+        Bean bean = (Bean)p;
+        
         bean.IsWatered = true;
         bean.Grow();
         Assert.True(bean.Height > 0);
@@ -34,7 +41,10 @@ public class GrowTest
         List<Produce> beanpods = bean.Harvest();
         Assert.Equal(0, bean.Pods);
         Assert.Equal(2, beanpods.Count);
-    }
+        Assert.Equal(typeof(BeanPod), beanpods[0].GetType());
+        // Harvet multiple times
+        // turn produce -> seeds
+        }
 
     [Fact]
     public void PotatoTest()

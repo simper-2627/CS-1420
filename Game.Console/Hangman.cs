@@ -2,10 +2,10 @@
 
 public class Hangman
 {
-    public string Answer;
-    public int IncorrectGuesses;
-    public char[] Correct;
-    public char[] GuessedLetters;
+    public string Answer { get; set; }
+    public int IncorrectGuesses { get; set; }
+    public char[] Correct { get; set; }
+    public char[] GuessedLetters { get; set; }
 
     public GameStatus Status
     {
