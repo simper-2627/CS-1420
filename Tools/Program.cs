@@ -1,7 +1,7 @@
 ﻿using System.Runtime.ExceptionServices;
 using System.Text.Json;
 
-internal class Program
+internal class NotProgram
 {
     private static void Main(string[] args)
     {
